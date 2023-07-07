@@ -7,6 +7,7 @@ const nodemailer = require("nodemailer");
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(cors({ origin: "*" }))
 app.use("/", router);
 app.listen(5000, () => console.log("Server Running"));
 console.log(process.env.EMAIL_USER);
@@ -38,7 +39,7 @@ router.post("/contact", (req, res) => {
 
     const mail = {
         from: name,
-        to: "info.fishtailroofing1@gmail.com",
+        to: "fishtailroofing@gmail.com",
         subject: "Contact Form Submission - Fishtail Roofing",
         html: `<p>Name: ${name}</p>
            <p>Email: ${email}</p>
