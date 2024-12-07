@@ -31,22 +31,18 @@ contactEmail.verify((error) => {
 
 router.post("/contact", (req, res) => {
     const name = req.body.name;
-    const location = req.body.location;
+    const subject = req.body.subject;
     const email = req.body.email;
     const message = req.body.message;
-    const phone = req.body.phone;
-    const service = req.body.service;
+
 
     const mail = {
         from: name,
-        to: "fishtailroofing@gmail.com",
-        subject: "Contact Form Submission - Fishtail Roofing",
+        to: "mailsanjog.regmi@gmail.com",
+        subject: "Contact Form Submission - The root Level " + subject,
         cc : "mailsanjog.regmi@gmail.com",
         html: `<p>Name: ${name}</p>
            <p>Email: ${email}</p>
-           <p>Phone: ${phone}</p>
-           <p> Location: ${location}</p>
-              <p>Service: ${service}</p>
            <p>Description: ${message}</p>`,
     };
     contactEmail.sendMail(mail, (error) => {
